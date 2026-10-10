@@ -1,0 +1,13 @@
+{
+  "name": "saku",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Saku: pencatatan keuangan pribadi, berjalan di komputer sendiri.",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

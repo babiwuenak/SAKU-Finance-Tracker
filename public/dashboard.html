@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saku</title>
+  <meta name="description" content="Pencatatan keuangan pribadi yang berjalan di komputer sendiri.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Lewati ke konten</a>
+
+  <div class="app">
+    <nav class="rail" aria-label="Navigasi utama">
+      <a class="brand" href="#/ringkasan" aria-label="Saku, ke Ringkasan">Saku</a>
+      <ul class="nav-list">
+        <li><a href="#/ringkasan" data-route="ringkasan">Ringkasan</a></li>
+        <li><a href="#/transaksi" data-route="transaksi">Transaksi</a></li>
+        <li><a href="#/anggaran" data-route="anggaran">Anggaran</a></li>
+        <li><a href="#/kategori" data-route="kategori">Kategori</a></li>
+        <li><a href="#/pengaturan" data-route="pengaturan">Pengaturan</a></li>
+      </ul>
+      <a class="rail-status" id="railStatus" href="#/pengaturan">Telegram: memeriksa</a>
+    </nav>
+
+    <div class="workspace">
+      <header class="topbar">
+        <a class="brand brand-mobile" href="#/ringkasan" aria-label="Saku, ke Ringkasan">Saku</a>
+        <div class="period" id="period" hidden>
+          <button type="button" class="btn ghost" id="periodPrev" aria-label="Periode sebelumnya">&lsaquo;</button>
+          <button type="button" class="btn period-label" id="periodBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="periodPop"></button>
+          <button type="button" class="btn ghost" id="periodNext" aria-label="Periode berikutnya">&rsaquo;</button>
+        </div>
+        <div class="top-actions">
+          <button type="button" class="btn" data-action="open-search" aria-keyshortcuts="Control+K">Cari <kbd>Ctrl K</kbd></button>
+          <button type="button" class="btn primary" data-action="add-tx">Tambah transaksi</button>
+        </div>
+        <div class="glass-surface popover" id="periodPop" role="dialog" aria-label="Pilih periode" hidden></div>
+      </header>
+      <main id="main" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <dialog id="txDialog" aria-labelledby="txTitle">
+    <form id="txForm" novalidate>
+      <header class="dlg-head">
+        <h2 id="txTitle">Tambah transaksi</h2>
+        <button type="button" class="btn ghost" data-close>Tutup</button>
+      </header>
+      <fieldset class="seg">
+        <legend>Jenis transaksi</legend>
+        <label><input type="radio" name="type" value="expense" checked><span>Pengeluaran</span></label>
+        <label><input type="radio" name="type" value="income"><span>Pemasukan</span></label>
+      </fieldset>
+      <div class="field">
+        <label for="txAmount">Jumlah (Rp)</label>
+        <input id="txAmount" name="amount" inputmode="numeric" autocomplete="off" placeholder="Contoh: 25000" aria-describedby="txAmountMsg">
+        <p id="txAmountMsg" class="hint" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="txCategory">Kategori</label>
+        <select id="txCategory" name="category_id" aria-describedby="txCategoryMsg"></select>
+        <p id="txCategoryMsg" class="hint" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="txWhen">Tanggal dan waktu (WIB)</label>
+        <input id="txWhen" name="occurred_at" type="datetime-local" aria-describedby="txWhenMsg">
+        <p id="txWhenMsg" class="hint" aria-live="polite"></p>
+      </div>
+      <div class="field">
+        <label for="txDesc">Catatan atau toko (opsional)</label>
+        <input id="txDesc" name="description" maxlength="200" autocomplete="off" placeholder="Contoh: kopi sore">
+        <p id="txDescMsg" class="hint" aria-live="polite"></p>
+      </div>
+      <p id="txError" class="form-error" role="alert"></p>
+      <footer class="dlg-foot">
+        <button type="button" class="btn" data-close>Batal</button>
+        <button type="submit" class="btn primary" id="txSubmit">Simpan transaksi</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog id="formDialog" aria-labelledby="formTitle">
+    <form id="genericForm" novalidate></form>
+  </dialog>
+
+  <dialog id="confirmDialog" aria-labelledby="confirmTitle">
+    <form method="dialog">
+      <h2 id="confirmTitle"></h2>
+      <p id="confirmText" class="dlg-text"></p>
+      <footer class="dlg-foot">
+        <button class="btn" value="cancel">Batal</button>
+        <button class="btn danger" id="confirmOk" value="ok"></button>
+      </footer>
+    </form>
+  </dialog>
+
+  <dialog id="paletteDialog" class="palette" aria-label="Cari dan buka cepat">
+    <div class="glass-surface palette-panel">
+      <label class="sr-only" for="paletteInput">Cari transaksi atau perintah</label>
+      <input id="paletteInput" type="search" autocomplete="off" placeholder="Cari catatan, kategori, atau jumlah">
+      <div id="paletteList" class="palette-list" role="listbox" aria-label="Hasil"></div>
+    </div>
+  </dialog>
+</body>
+</html>

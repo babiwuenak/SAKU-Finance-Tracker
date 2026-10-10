@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saku, pencatatan keuangan lewat Telegram</title>
+  <meta name="description" content="Catat pemasukan dan pengeluaran lewat Telegram, lalu pahami arus uangmu dari dashboard pribadi yang berjalan di komputermu sendiri.">
+  <meta name="saku-local-origin" content="http://127.0.0.1:8000">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="landing.css">
+  <script src="landing.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip" href="#utama">Lewati ke konten</a>
+
+  <header class="top">
+    <div class="wrap top-row">
+      <a class="mark" href="#top" aria-label="Saku, kembali ke atas">Saku</a>
+      <nav class="top-nav" aria-label="Navigasi halaman">
+        <a href="#cara-kerja">Cara kerja</a>
+        <a href="#privasi">Privasi</a>
+      </nav>
+      <a class="btn btn-primary" href="/dashboard" data-open-dashboard>Buka dashboard</a>
+    </div>
+  </header>
+
+  <main id="utama" tabindex="-1">
+
+    <section class="hero wrap" aria-labelledby="judul">
+      <div class="hero-copy">
+        <h1 id="judul" class="rise">
+          <span>Keuangan lebih tertata.</span>
+          <span class="soft">Pikiran lebih tenang.</span>
+        </h1>
+        <p class="lead rise d1">Catat pemasukan dan pengeluaran lewat Telegram. Pahami arus uangmu dari dashboard pribadi yang berjalan di komputermu sendiri.</p>
+        <div class="cta-row rise d2">
+          <a class="btn btn-primary" href="#cara-kerja">Lihat cara kerja</a>
+          <a class="btn btn-quiet" href="/dashboard" data-open-dashboard>Buka dashboard</a>
+        </div>
+        <p class="fine rise d2">Berjalan di komputermu sendiri. Butuh Node.js 20 atau lebih baru.</p>
+      </div>
+
+      <div class="hero-visual rise d3">
+        <div class="preview" role="img" aria-label="Contoh tampilan: pesan Telegram '/keluar 28000 kopi sore' dan balasan bot yang menyimpan transaksi, di atas dashboard Ringkasan dengan arus kas bersih, grafik pemasukan dan pengeluaran, serta tiga kategori pengeluaran terbesar. Semua angka hanya contoh.">
+          <div class="dash" aria-hidden="true">
+            <div class="dash-head"><strong>Ringkasan keuangan</strong><span>Okt 2026, contoh</span></div>
+            <div class="net">
+              <p class="net-label">Arus kas bersih</p>
+              <p class="net-value">+Rp1.609.000</p>
+              <div class="net-split">
+                <div><p class="net-label">Pemasukan</p><p>+Rp2.900.000</p></div>
+                <div><p class="net-label">Pengeluaran</p><p>&minus;Rp1.291.000</p></div>
+              </div>
+            </div>
+            <svg class="mini" viewBox="0 0 300 76" preserveAspectRatio="none" focusable="false">
+              <line x1="0" y1="72.5" x2="300" y2="72.5" class="mini-base"/>
+              <rect x="8" y="8" width="7" height="64" rx="2" class="b-in"/>
+              <rect x="40" y="38" width="7" height="34" rx="2" class="b-out"/>
+              <rect x="64" y="66" width="7" height="6" rx="2" class="b-out"/>
+              <rect x="88" y="62" width="7" height="10" rx="2" class="b-out"/>
+              <rect x="112" y="68" width="7" height="4" rx="2" class="b-out"/>
+              <rect x="136" y="50" width="7" height="22" rx="2" class="b-out"/>
+              <rect x="152" y="46" width="7" height="26" rx="2" class="b-in"/>
+              <rect x="160" y="62" width="7" height="10" rx="2" class="b-out"/>
+              <rect x="184" y="60" width="7" height="12" rx="2" class="b-out"/>
+              <rect x="208" y="54" width="7" height="18" rx="2" class="b-out"/>
+              <rect x="232" y="64" width="7" height="8" rx="2" class="b-out"/>
+              <rect x="256" y="44" width="7" height="28" rx="2" class="b-out"/>
+              <rect x="280" y="58" width="7" height="14" rx="2" class="b-out"/>
+            </svg>
+            <ul class="mini-cats">
+              <li><span>Tagihan</span><span>&minus;Rp650.000</span><i style="--w:50%"></i></li>
+              <li><span>Belanja</span><span>&minus;Rp310.000</span><i style="--w:24%"></i></li>
+              <li><span>Kesehatan</span><span>&minus;Rp125.000</span><i style="--w:10%"></i></li>
+            </ul>
+          </div>
+
+          <div class="tg glass" aria-hidden="true">
+            <div class="tg-head"><strong>Bot Telegram</strong><span>contoh</span></div>
+            <p class="bub me">/keluar 28000 kopi sore</p>
+            <div class="bub bot">
+              <strong>Transaksi tersimpan</strong>
+              <span>Pengeluaran &middot; Rp28.000</span>
+              <span>Makanan &amp; Minuman</span>
+              <small>Kopi sore &middot; 9 Okt 2026, 10.42</small>
+            </div>
+          </div>
+        </div>
+        <p class="caption">Contoh tampilan. Pesan dan angkanya hanya ilustrasi, bukan data keuangan siapa pun.</p>
+      </div>
+    </section>
+
+    <section class="band band-dark" id="cara-kerja" aria-labelledby="judul-alur">
+      <div class="wrap">
+        <h2 id="judul-alur">Dari satu pesan ke gambaran utuh.</h2>
+        <ol class="flow">
+          <li>
+            <h3>Catat di Telegram</h3>
+            <p>Kirim pesan singkat seperti <code>/keluar 28000 kopi sore</code>. Bot bertanya hanya bila ada yang belum jelas.</p>
+          </li>
+          <li>
+            <h3>Simpan secara lokal</h3>
+            <p>Transaksi masuk ke database di komputermu. Pesan yang terkirim dua kali tidak membuat catatan ganda.</p>
+          </li>
+          <li>
+            <h3>Pahami di dashboard</h3>
+            <p>Arus kas, kategori terbesar, dan daftar transaksi muncul tanpa perlu memuat ulang halaman.</p>
+          </li>
+        </ol>
+        <p class="flow-note">Telegram dan dashboard memakai data transaksi yang sama. Yang dicatat di satu sisi terlihat di sisi lain.</p>
+      </div>
+    </section>
+
+    <section class="benefits wrap" aria-labelledby="judul-manfaat">
+      <h2 id="judul-manfaat" class="sr-only">Manfaat Saku</h2>
+
+      <article class="benefit">
+        <div class="benefit-text">
+          <h3>Cepat dicatat</h3>
+          <p>Satu pesan cukup: jumlah, kategori, dan catatan singkat. Kalau kategorinya belum jelas, bot menanyakannya dulu dan tidak menebak.</p>
+        </div>
+        <figure class="crop crop-chat">
+          <div class="chat" role="img" aria-label="Contoh percakapan: pengguna mengirim 'kopi 28000'. Bot menjawab bahwa kategori belum jelas dan meminta memilih. Pengguna memilih Makanan dan Minuman, lalu bot menyatakan transaksi tersimpan sebagai pengeluaran Rp28.000.">
+            <p class="bub me" aria-hidden="true">kopi 28000</p>
+            <p class="bub bot" aria-hidden="true">Aku menemukan jumlah Rp28.000, tetapi kategorinya belum jelas. Pilih kategori untuk melanjutkan.</p>
+            <p class="bub me" aria-hidden="true">Makanan &amp; Minuman</p>
+            <div class="bub bot" aria-hidden="true"><strong>Transaksi tersimpan</strong><span>Pengeluaran &middot; Rp28.000</span></div>
+          </div>
+          <figcaption>Contoh percakapan</figcaption>
+        </figure>
+      </article>
+
+      <article class="benefit benefit-flip">
+        <div class="benefit-text">
+          <h3>Mudah dipahami</h3>
+          <p>Arus kas bersih jadi angka utama. Di bawahnya, kategori yang paling banyak menyerap uangmu, diurutkan dari yang terbesar lengkap dengan persentasenya.</p>
+        </div>
+        <figure class="crop crop-cats">
+          <div class="cats" role="img" aria-label="Contoh rincian pengeluaran per kategori: Tagihan Rp650.000 (50,3 persen), Belanja Rp310.000 (24 persen), Kesehatan Rp125.000 (9,7 persen), Makanan dan Minuman Rp110.000 (8,5 persen).">
+            <p class="cats-total" aria-hidden="true"><span>Total pengeluaran</span> <strong>&minus;Rp1.291.000</strong></p>
+            <ul aria-hidden="true">
+              <li><span>Tagihan</span><span>&minus;Rp650.000 <small>50,3%</small></span><i style="--w:50.3%"></i></li>
+              <li><span>Belanja</span><span>&minus;Rp310.000 <small>24%</small></span><i style="--w:24%"></i></li>
+              <li><span>Kesehatan</span><span>&minus;Rp125.000 <small>9,7%</small></span><i style="--w:9.7%"></i></li>
+              <li><span>Makanan &amp; Minuman</span><span>&minus;Rp110.000 <small>8,5%</small></span><i style="--w:8.5%"></i></li>
+            </ul>
+          </div>
+          <figcaption>Contoh rincian kategori</figcaption>
+        </figure>
+      </article>
+
+      <article class="benefit">
+        <div class="benefit-text">
+          <h3>Tetap di kendalimu</h3>
+          <p>Aplikasi dan databasenya berjalan di komputermu. Datamu satu berkas yang bisa disalin sebagai cadangan, dan seluruh transaksi bisa diunduh sebagai CSV kapan saja.</p>
+        </div>
+        <figure class="crop crop-settings">
+          <dl class="kv">
+            <div><dt>Berkas data</dt><dd><code>data/saku.json</code></dd></div>
+            <div><dt>Alamat layanan</dt><dd><code>127.0.0.1:8000</code></dd></div>
+            <div><dt>Ekspor</dt><dd>Seluruh transaksi sebagai CSV</dd></div>
+          </dl>
+          <figcaption>Pengaturan bawaan Saku</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="band band-sage" id="privasi" aria-labelledby="judul-privasi">
+      <div class="wrap">
+        <div class="priv-head">
+          <h2 id="judul-privasi">Keuangan pribadi, kendali tetap di tanganmu.</h2>
+          <p>Saku dirancang untuk berjalan di komputermu. Aplikasi, database, dan dashboard ada di sana, dan layanannya hanya menerima sambungan dari komputer itu sendiri.</p>
+        </div>
+        <div class="priv-cols">
+          <div>
+            <h3>Yang tetap di komputermu</h3>
+            <ul>
+              <li>Database berupa satu berkas di folder <code>data</code>.</li>
+              <li>Dashboard hanya bisa dibuka dari komputer yang menjalankannya (alamat <code>127.0.0.1</code>).</li>
+              <li>Token bot Telegram tidak pernah dibaca atau ditampilkan oleh Saku.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Yang perlu kamu ketahui</h3>
+            <ul>
+              <li>Pesan Telegram tetap melewati server Telegram.</li>
+              <li>Saku belum memakai kata sandi. Perlindungannya adalah alamat lokal tadi, jadi jangan mengubahnya agar bisa diakses dari jaringan.</li>
+              <li>CSV hasil ekspor tidak terenkripsi. Simpan di tempat yang aman.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band-green close" aria-labelledby="judul-penutup">
+      <div class="wrap close-grid">
+        <div>
+          <h2 id="judul-penutup">Mulai dari satu pesan.</h2>
+          <p>Jalankan Saku di komputermu, hubungkan bot Telegram-mu, lalu catat transaksi pertamamu.</p>
+          <a class="btn btn-paper" href="/dashboard" data-open-dashboard>Buka dashboard</a>
+        </div>
+        <div class="run">
+          <p class="run-label" id="run-label">Salin <code>.env.example</code> menjadi <code>.env</code> dan isi <code>SAKU_BOT_KEY</code> serta <code>TELEGRAM_ALLOWED_USER_IDS</code>. Lalu jalankan:</p>
+          <div class="run-box">
+            <pre aria-labelledby="run-label"><code id="startCmd">npm start</code></pre>
+            <button type="button" class="btn btn-copy" id="copyBtn" hidden>Salin</button>
+          </div>
+          <p class="run-status" id="copyStatus" role="status"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-row">
+      <a class="mark" href="#top" aria-label="Saku, kembali ke atas">Saku</a>
+      <nav aria-label="Tautan footer">
+        <a href="#cara-kerja">Cara kerja</a>
+        <a href="#privasi">Privasi</a>
+        <a href="/dashboard" data-open-dashboard>Dashboard</a>
+      </nav>
+      <p>Halaman ini tidak memuat pelacak atau skrip pihak ketiga.</p>
+    </div>
+  </footer>
+
+  <dialog id="localDialog" aria-labelledby="localTitle">
+    <h2 id="localTitle">Saku belum berjalan di komputer ini</h2>
+    <p>Dashboard hanya bisa dibuka saat Saku aktif di komputermu. Buka terminal di folder Saku, jalankan perintah ini, lalu coba lagi:</p>
+    <pre><code>npm start</code></pre>
+    <p class="dlg-addr">Alamat yang diperiksa: <code id="localAddr"></code></p>
+    <p class="dlg-status" id="localStatus" role="status"></p>
+    <div class="dlg-actions">
+      <button type="button" class="btn btn-quiet" data-close>Tutup</button>
+      <button type="button" class="btn btn-primary" id="retryBtn">Coba lagi</button>
+    </div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,237 @@
+/* Landing Saku: hijau hutan, kertas hangat, satu lapisan kaca (panel pesan Telegram di hero). */
+
+:root {
+  --green: #2c5c4f;
+  --forest: #183b32;
+  --paper: #f2f0ef;
+  --sage: #dce6e0;
+  /* Abu hangat dari DESIGN-2.md hanya untuk garis dan elemen non-teks (3,8:1 di atas kertas). Teks memakai --gray-text. */
+  --gray: #777b76;
+  --gray-text: #5d645e;
+  --line: #d8d6d1;
+  --expense: #a45145;
+  --ring: #2c5c4f;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --gutter: 20px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: var(--paper); color: var(--forest); font: 17px/1.6 var(--font); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+code { font-family: var(--mono); font-size: 0.9em; }
+section[id] { scroll-margin-top: 16px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.wrap { width: min(1200px, 100% - 2 * var(--gutter)); margin-inline: auto; }
+@media (min-width: 720px) { :root { --gutter: 32px; } }
+@media (min-width: 1100px) { :root { --gutter: 48px; } }
+
+:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+.band-dark, .band-green { --ring: #f2f0ef; }
+main:focus, main:focus-visible { outline: none; }
+.skip { position: absolute; left: 12px; top: -64px; z-index: 50; background: var(--green); color: #fff; padding: 12px 16px; border-radius: 10px; }
+.skip:focus { top: 12px; }
+
+/* ---------- tombol ---------- */
+[hidden] { display: none !important; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px;
+  border: 1.5px solid transparent; border-radius: 12px; font: inherit; font-weight: 600; line-height: 1.2; text-decoration: none; cursor: pointer;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease), color 160ms var(--ease), transform 120ms var(--ease);
+}
+.btn:active { transform: translateY(1px); }
+.btn[aria-disabled="true"], .btn:disabled { opacity: 0.6; cursor: progress; pointer-events: none; }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--forest); }
+.btn-quiet { border-color: var(--green); color: var(--green); background: transparent; }
+.btn-quiet:hover { background: var(--sage); }
+.btn-paper { background: var(--paper); color: var(--forest); }
+.btn-paper:hover { background: #fff; }
+.btn-copy { min-height: 44px; padding: 0 16px; background: transparent; border-color: rgba(242, 240, 239, 0.7); color: var(--paper); }
+.btn-copy:hover { background: rgba(242, 240, 239, 0.14); }
+
+/* ---------- header ---------- */
+.top { padding: 16px 0; }
+.top-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.mark { font-size: 26px; font-weight: 650; letter-spacing: -0.02em; color: var(--green); text-decoration: none; line-height: 1; padding: 0; display: inline-flex; align-items: center; min-height: 44px; }
+.top-nav { display: none; gap: 28px; margin-right: auto; margin-left: 40px; }
+.top-nav a { text-decoration: none; padding: 12px 0; font-weight: 500; background: linear-gradient(currentColor, currentColor) 0 calc(100% - 8px) / 0 1.5px no-repeat; transition: background-size 200ms var(--ease); }
+.top-nav a:hover { background-size: 100% 1.5px; }
+@media (min-width: 560px) { .top-nav { display: flex; } }
+
+/* ---------- hero ---------- */
+.hero { display: grid; gap: 48px; padding-block: 28px 64px; }
+h1 { font-size: clamp(2.6rem, 1.3rem + 5.4vw, 4.25rem); font-weight: 620; letter-spacing: -0.035em; line-height: 1.04; color: var(--forest); }
+h1 span { display: block; }
+h1 .soft { color: var(--green); }
+.lead { margin-top: 24px; font-size: 1.15rem; max-width: 34em; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.fine { margin-top: 18px; font-size: 0.9rem; color: var(--gray-text); }
+@media (min-width: 1024px) {
+  .hero { grid-template-columns: minmax(0, 11fr) minmax(0, 13fr); align-items: center; gap: 56px; padding-block: 64px 112px; }
+}
+
+.rise { animation: rise 520ms var(--ease) both; }
+.rise.d1 { animation-delay: 90ms; }
+.rise.d2 { animation-delay: 180ms; }
+.rise.d3 { animation-delay: 220ms; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+/* ---------- pratinjau produk (contoh) ---------- */
+.preview { display: grid; }
+.dash { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 20px 20px 24px; box-shadow: 0 24px 48px -28px rgba(24, 59, 50, 0.3); overflow: hidden; }
+.dash-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; font-size: 0.95rem; }
+.dash-head span { font-size: 0.8rem; color: var(--gray-text); }
+.net { margin-top: 14px; background: var(--green); color: var(--paper); border-radius: 12px; padding: 16px 18px; }
+.net-label { font-size: 0.8rem; opacity: 0.9; }
+.net-value { font-size: clamp(1.7rem, 1.1rem + 2.4vw, 2.3rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.net-split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(242, 240, 239, 0.28); font-variant-numeric: tabular-nums; font-weight: 600; font-size: 0.95rem; }
+.net-split .net-label { font-weight: 400; }
+.mini { display: block; width: 100%; height: 76px; margin-top: 16px; }
+.mini-base { stroke: var(--line); stroke-width: 1; }
+.b-in { fill: var(--green); }
+.b-out { fill: var(--expense); }
+.mini-cats { margin-top: 14px; display: grid; gap: 10px; font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.mini-cats li { display: grid; grid-template-columns: 1fr auto; row-gap: 4px; }
+.mini-cats li span:last-of-type { font-weight: 600; }
+.mini-cats i, .cats i { grid-column: 1 / -1; display: block; height: 6px; border-radius: 4px; background: var(--sage); position: relative; overflow: hidden; }
+.mini-cats i::after, .cats i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--green); border-radius: 4px; }
+
+/* Satu-satunya lapisan kaca di halaman: pesan Telegram melayang di atas dashboard. Isi 0,86 agar teks sekunder tetap >= 4,5:1 di atas area hijau. */
+.glass {
+  background: rgba(255, 255, 255, 0.86); border: 1px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(18px) saturate(135%); -webkit-backdrop-filter: blur(18px) saturate(135%);
+  box-shadow: 0 18px 40px -18px rgba(24, 59, 50, 0.4);
+}
+@supports not ((backdrop-filter: blur(1px))) { .glass { background: rgba(255, 255, 255, 0.97); } }
+@media (prefers-reduced-transparency: reduce) { .glass { background: rgba(255, 255, 255, 0.98); backdrop-filter: none; -webkit-backdrop-filter: none; } }
+
+.tg { border-radius: 22px; padding: 16px; display: grid; gap: 10px; margin: -72px 8px 0 0; width: calc(100% - 8px); position: relative; }
+.tg-head { display: flex; justify-content: space-between; font-size: 0.82rem; }
+.tg-head span { color: var(--gray-text); }
+.bub { max-width: 86%; padding: 10px 14px; border-radius: 16px; font-size: 0.95rem; line-height: 1.45; }
+.bub.me { justify-self: end; background: var(--green); color: #fff; border-bottom-right-radius: 5px; }
+.bub.bot { justify-self: start; background: #fff; border: 1px solid var(--line); border-bottom-left-radius: 5px; display: grid; gap: 2px; }
+.bub.bot small { color: var(--gray-text); font-size: 0.8rem; }
+.caption { margin-top: 16px; font-size: 0.85rem; color: var(--gray-text); }
+@media (min-width: 720px) {
+  .preview { grid-template-columns: repeat(12, minmax(0, 1fr)); padding-bottom: 36px; }
+  .dash { grid-column: 3 / -1; grid-row: 1; padding: 24px 26px 28px; }
+  .tg { grid-column: 1 / 9; grid-row: 1; align-self: end; margin: 0 0 -36px; width: auto; }
+}
+
+/* ---------- pita gelap: alur kerja ---------- */
+.band { padding-block: 72px; }
+.band-dark { background: var(--forest); color: var(--paper); padding-block: 72px 80px; }
+h2 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem); font-weight: 620; letter-spacing: -0.03em; line-height: 1.1; }
+.band-dark h2 { max-width: 14em; }
+.flow { --g: 48px; position: relative; display: grid; gap: 40px; margin-top: 52px; }
+.flow li { position: relative; padding-left: 38px; }
+.flow li::before { content: ""; position: absolute; left: 0; top: 7px; width: 11px; height: 11px; border-radius: 50%; background: var(--paper); }
+.flow li:not(:last-child)::after { content: ""; position: absolute; left: 5px; top: 22px; bottom: -34px; width: 1px; background: rgba(242, 240, 239, 0.45); transform-origin: top; transition: transform 700ms var(--ease); }
+.flow h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+.flow p { margin-top: 8px; color: rgba(242, 240, 239, 0.84); max-width: 26em; }
+.flow code { background: rgba(242, 240, 239, 0.12); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+.flow-note { margin-top: 48px; padding-top: 22px; border-top: 1px solid rgba(242, 240, 239, 0.22); color: rgba(242, 240, 239, 0.84); max-width: 40em; }
+.js .flow:not(.in) li:not(:last-child)::after { transform: scaleY(0); }
+@media (min-width: 860px) {
+  .band-dark { padding-block: 96px 104px; }
+  .flow { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--g); margin-top: 72px; }
+  .flow li { padding: 40px 0 0; }
+  .flow li::before { top: 0; }
+  .flow li:not(:last-child)::after { display: none; }
+  .flow::before { content: ""; position: absolute; top: 5px; left: 5px; width: calc(2 * ((100% - 2 * var(--g)) / 3 + var(--g))); height: 1px; background: rgba(242, 240, 239, 0.45); transform-origin: left; transition: transform 900ms var(--ease); }
+  .js .flow:not(.in)::before { transform: scaleX(0); }
+}
+
+/* ---------- manfaat: pembagian editorial ---------- */
+.benefits { padding-block: 24px 24px; }
+.benefit { display: grid; gap: 28px; padding-block: 52px; border-top: 1px solid var(--line); }
+.benefit:first-of-type { border-top: 0; }
+.benefit h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.1rem); font-weight: 620; letter-spacing: -0.025em; line-height: 1.15; }
+.benefit p { margin-top: 14px; max-width: 30em; }
+.crop figcaption { margin-top: 12px; font-size: 0.85rem; color: var(--gray-text); }
+.crop-chat .chat { background: var(--sage); border-radius: 22px; padding: 26px; display: grid; gap: 12px; }
+.cats { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.cats-total { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.95rem; }
+.cats-total span { color: var(--gray-text); }
+.cats ul { margin-top: 18px; display: grid; gap: 16px; font-variant-numeric: tabular-nums; }
+.cats li { display: grid; grid-template-columns: 1fr auto; row-gap: 6px; font-size: 0.95rem; }
+.cats li span:first-child { font-weight: 600; }
+.cats small { color: var(--gray-text); margin-left: 6px; font-size: 0.8rem; }
+.kv { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 6px 20px; }
+.kv > div { display: grid; grid-template-columns: 9em 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); font-size: 0.95rem; }
+.kv > div:first-child { border-top: 0; }
+.kv dt { color: var(--gray-text); }
+.kv dd { overflow-wrap: anywhere; }
+@media (min-width: 900px) {
+  .benefit { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; padding-block: 84px; }
+  .benefit-text { grid-column: 1 / 6; grid-row: 1; }
+  .crop { grid-column: 7 / -1; grid-row: 1; }
+  .benefit-flip .benefit-text { grid-column: 8 / -1; }
+  .benefit-flip .crop { grid-column: 1 / 7; }
+  .crop-settings { grid-column: 8 / -1; }
+  .crop-chat .chat { padding: 34px; }
+}
+
+/* ---------- privasi ---------- */
+.band-sage { background: var(--sage); padding-block: 64px 72px; }
+.priv-head { display: grid; gap: 20px; }
+.priv-head h2 { max-width: 13em; }
+.priv-head p { max-width: 32em; }
+.priv-cols { display: grid; gap: 40px; margin-top: 52px; padding-top: 32px; border-top: 1px solid rgba(24, 59, 50, 0.25); }
+.priv-cols h3 { font-size: 1.1rem; font-weight: 650; }
+.priv-cols ul { margin-top: 14px; display: grid; gap: 12px; }
+.priv-cols li { max-width: 30em; }
+.priv-cols code { background: rgba(24, 59, 50, 0.08); border-radius: 5px; padding: 1px 6px; }
+@media (min-width: 900px) {
+  .band-sage { padding-block: 104px 112px; }
+  .priv-head { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 64px; align-items: end; }
+  .priv-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; margin-top: 72px; }
+}
+
+/* ---------- penutup ---------- */
+.band-green { background: var(--green); color: var(--paper); }
+.close-grid { display: grid; gap: 36px; }
+.close h2 { max-width: 11em; }
+.close p { margin-top: 16px; max-width: 28em; color: rgba(242, 240, 239, 0.9); }
+.close .btn { margin-top: 28px; }
+.run-label { margin-top: 0 !important; font-size: 0.95rem; }
+.run code { font-size: 0.88em; }
+.run-label code { background: rgba(242, 240, 239, 0.14); border-radius: 5px; padding: 1px 6px; }
+.run-box { margin-top: 14px; display: flex; align-items: center; gap: 12px; background: var(--forest); border-radius: 12px; padding: 8px 8px 8px 20px; }
+.run-box pre { margin: 0; flex: 1; overflow-x: auto; font-family: var(--mono); font-size: 1.05rem; color: var(--paper); padding: 8px 0; }
+.run-status { margin-top: 10px !important; min-height: 1.5em; font-size: 0.88rem; }
+@media (min-width: 860px) {
+  .band-green { padding-block: 104px 112px; }
+  .close-grid { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); column-gap: 80px; align-items: end; }
+}
+
+/* ---------- footer ---------- */
+.foot { padding-block: 36px 44px; }
+.foot-row { display: grid; gap: 14px; font-size: 0.92rem; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.foot nav a { padding: 10px 0; text-underline-offset: 3px; }
+.foot p { color: var(--gray-text); }
+@media (min-width: 860px) { .foot-row { grid-template-columns: auto 1fr auto; align-items: center; column-gap: 40px; } }
+
+/* ---------- dialog koneksi lokal ---------- */
+dialog { border: 0; border-radius: 16px; padding: 28px; width: min(460px, 100vw - 32px); color: var(--forest); background: #fff; box-shadow: 0 24px 60px rgba(24, 59, 50, 0.3); }
+dialog[open] { animation: rise 200ms var(--ease); }
+dialog::backdrop { background: rgba(24, 59, 50, 0.45); }
+dialog h2 { font-size: 1.45rem; letter-spacing: -0.02em; }
+dialog p { margin-top: 12px; }
+dialog pre { margin: 14px 0 0; padding: 12px 14px; background: var(--paper); border-radius: 10px; overflow-x: auto; font-family: var(--mono); }
+.dlg-addr { font-size: 0.9rem; color: var(--gray-text); }
+.dlg-status { min-height: 1.5em; font-size: 0.92rem; font-weight: 600; }
+.dlg-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .flow:not(.in)::before, .js .flow:not(.in) li::after { transform: none !important; }
+}
