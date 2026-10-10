@@ -62,3 +62,5 @@ Versi awal memakai satu berkas JSON dengan penulisan atomik, cukup untuk satu pe
 - Token bot Telegram tidak pernah dibaca atau ditampilkan oleh Saku. Kunci `SAKU_BOT_KEY` hanya di `.env`.
 - `.env`, `data/`, dan berkas CSV ada di `.gitignore`. CSV hasil ekspor tidak terenkripsi.
 - Aplikasi tidak punya login. Siapa pun yang bisa membuka `127.0.0.1:8000` di komputer ini bisa melihat datanya.
+
+# Dibuat sepenuhnya oleh Claude Sonnet 5.5
