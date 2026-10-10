@@ -63,4 +63,7 @@ Versi awal memakai satu berkas JSON dengan penulisan atomik, cukup untuk satu pe
 - `.env`, `data/`, dan berkas CSV ada di `.gitignore`. CSV hasil ekspor tidak terenkripsi.
 - Aplikasi tidak punya login. Siapa pun yang bisa membuka `127.0.0.1:8000` di komputer ini bisa melihat datanya.
 
-# Dibuat sepenuhnya oleh Claude Sonnet 5.5
+
+---
+
+<p align="center"><sub>Crafted entirely with Claude Sonnet 5.5.</sub></p>
