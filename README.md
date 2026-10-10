@@ -1,4 +1,6 @@
 # Saku
+SAKU — Your money, in your hands.
+Track through Telegram. Understand through your dashboard.
 
 Pencatatan keuangan pribadi. Catat lewat bot Telegram, lihat ringkasannya di dashboard lokal.
 Dashboard dan database berjalan di komputer ini. Pesan Telegram tetap melewati server Telegram.
